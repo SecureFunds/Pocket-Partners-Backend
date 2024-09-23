@@ -10,4 +10,7 @@ import java.util.Optional;
 public interface GroupQueryService {
     Optional<Group> handle(GetGroupByIdQuery query);
     List<Group> handle(GetAllGroupsQuery query);
+
+
+    
 }
