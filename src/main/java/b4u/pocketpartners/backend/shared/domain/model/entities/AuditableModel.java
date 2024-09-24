@@ -13,6 +13,17 @@ import java.util.Date;
 @Getter
 @EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
+
+/*para auditoría automática de las entidades. Al ser un MappedSuperclass, otras
+entidades pueden heredar de esta clase y automáticamente tendrán los campos 
+createdAt y updatedAt gestionados sin necesidad de agregar lógica adicional en las 
+clases hijas.
+*/
+
+
+
+
+
 public class AuditableModel {
 
     @CreatedDate
