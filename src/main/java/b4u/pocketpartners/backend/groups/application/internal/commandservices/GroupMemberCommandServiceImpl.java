@@ -27,12 +27,12 @@ public class GroupMemberCommandServiceImpl implements GroupMemberCommandService 
     @Override
     public Optional<GroupMember> handle(CreateGroupMemberCommand command) {
         if (command == null || groupMemberRepository.findByGroupIdAndUserInformationId(command.groupId(), command.userInformationId()).isPresent()) {
-            throw new RuntimeException("Group member already exists // Miembro de Grupo ya existe");
+            throw new RuntimeException("Group member already exists - Miembro de Grupo ya existe");
         }
         var group = groupRepository.findById(command.groupId());
         var user = userInformationRepository.findById(command.userInformationId());
         if (group.isEmpty() || user.isEmpty()) {
-            throw new RuntimeException("Group or user not found // Miembro de Grupo no se ha encontrado");
+            throw new RuntimeException("Group or user not found - Miembro de Grupo no se ha encontrado");
         }
         var groupMember = new GroupMember(group.get(), user.get());
         return Optional.of(groupMemberRepository.save(groupMember));
