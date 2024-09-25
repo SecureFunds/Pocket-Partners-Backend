@@ -35,14 +35,14 @@ public class GroupOperationCommandServiceImpl implements GroupOperationCommandSe
             GroupOperation groupOperation = new GroupOperation(group, expense, payment);
             groupOperation = groupOperationRepository.save(groupOperation);
             return groupOperation.getId();
-        }).orElseThrow(() -> new RuntimeException("Group not found"));
+        }).orElseThrow(() -> new RuntimeException("Group not found // Grupo No encontrado"));
         return 0L;
     }
 
 
     public void handle(DeleteGroupOperationCommand command) {
         if(!groupOperationRepository.existsById(command.groupOperationId())){
-            throw new IllegalArgumentException("Group does not exist");
+            throw new IllegalArgumentException("Group does not exist // Grupo no Existe");
         }
         try{
             groupOperationRepository.deleteById(command.groupOperationId());
